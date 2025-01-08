@@ -19,7 +19,6 @@ type ResponseErr struct {
 }
 
 /*
-*
 Description: Lista todas as tarefas cadastradas no banco de dados
 
 	@Tags Tarefas
@@ -63,18 +62,17 @@ func (tc *TaskController) GetTasks(ctx *gin.Context) {
 }
 
 /*
-*
-@Summary Busca uma tarefa pelo ID
-@Description Busca uma tarefa cadastrada no banco de dados pelo ID
-@Tags Tarefas
-@Accept json
-@Produce json
-@Success 200 {object} Tasks
-@Failure 400 {object} ResponseErr
-@Failure 404 {object} ResponseErr
-@Failure 500 {object} ResponseErr
-@Router /tarefas/{id} [get]
-@Param id path int true "ID da tarefa"
+	 Busca uma tarefa cadastrada no banco de dados pelo ID
+
+		@Tags Tarefas
+		@Accept json
+		@Produce json
+		@Success 200 {object} Tasks
+		@Failure 400 {object} ResponseErr
+		@Failure 404 {object} ResponseErr
+		@Failure 500 {object} ResponseErr
+		@Router /tarefas/{id} [get]
+		@Param id path int true "ID da tarefa"
 */
 func (tc *TaskController) GetTask(ctx *gin.Context) {
 	var task models.Tasks
@@ -117,17 +115,17 @@ func (tc *TaskController) GetTask(ctx *gin.Context) {
 
 /*
 *
-@Summary Busca tarefas pelo título
-@Description Busca tarefas cadastradas no banco de dados pelo título
-@Tags Tarefas
-@Accept json
-@Produce json
-@Success 200 {object} []Tasks
-@Failure 400 {object} ResponseErr
-@Failure 404 {object} ResponseErr
-@Failure 500 {object} ResponseErr
-@Router /tarefas/buscar [get]
-@Param titulo query string true "Título da tarefa"
+Description Busca tarefas cadastradas no banco de dados pelo título
+
+	@Tags Tarefas
+	@Accept json
+	@Produce json
+	@Success 200 {object} []Tasks
+	@Failure 400 {object} ResponseErr
+	@Failure 404 {object} ResponseErr
+	@Failure 500 {object} ResponseErr
+	@Router /tarefas/buscar [get]
+	@Param titulo query string true "Título da tarefa"
 */
 func (tc *TaskController) FindTasks(ctx *gin.Context) {
 	title := ctx.Query("titulo")

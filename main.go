@@ -19,9 +19,9 @@ func main() {
 	}
 	defer db.Close()
 
-	r := gin.Default()
+	api := gin.Default()
 
-	r.Use(cors.New(cors.Config{
+	api.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},            // Métodos HTTP permitidos
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"}, // Headers permitidos
@@ -31,9 +31,9 @@ func main() {
 	}))
 
 	// registrar rotas
-	routes.TaskRoute(r, db)
+	routes.TaskRoute(api, db)
 
-	if err := r.Run(":3000"); err != nil {
+	if err := api.Run(":3000"); err != nil {
 		fmt.Println("Erro ao iniciar servidor")
 	}
 }
